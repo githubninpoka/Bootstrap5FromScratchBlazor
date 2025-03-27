@@ -1,0 +1,209 @@
+﻿@page "/userlist"
+@inject IJSRuntime jsRuntime
+
+<div>
+
+    <div class="pb-5">
+        <h3>UserList - Use the ThemeToggles!</h3>
+
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search Users" aria-label="Search Users">
+                </form>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link text-primary" href="#">Reputation</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">New Users</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Editors</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Moderators</a>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+        <div class="d-flex flex-wrap">
+            @foreach (var user in userInfos)
+            {
+                <div class="card mb-3" style="max-width: 400px;">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="images/head-659651_1280.png" class="img-fluid rounded-start" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">@user.Name</h5>
+                                <p class="card-text">@user.Address</p>
+                                <div class="d-flex flex-wrap">
+                                    @foreach (var skill in @user.Skills)
+                                    {
+                                        <div class="badge bg-primary me-1">@skill</div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <nav aria-label="...">
+            <ul class="pagination pagination-dark">
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1">Previous</a>
+                </li>
+                <li class="page-item "><a class="page-link" href="#">1</a></li>
+                <li class="page-item active">
+                    <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="page-item "><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div>
+        <span class="text-light">what teach wanted, migrated to blazor-speak</span>
+    </div>
+
+    <div id="themeFromHere" data-bs-theme=@themeSetting>
+        @* keep stuff in this container for sizing *@
+        <header class="mb-5">
+            <div class="container mt-5">
+                <div class="d-flex justify-content-end">
+                    <div class="btn-group">
+
+                        <button @onclick="@(() => HandleThemeClick("dark"))" class="btn btn-secondary btn-sm">Dark</button>
+                        <button @onclick="@(() => HandleThemeClick("light"))" class="btn btn-light btn-sm">Light</button>
+                    </div>
+                </div>
+                <h1 class="mb-4">Users</h1>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <input type="text" class="form-control form-control-lg" placeholder="Search Users" />
+                    </div>
+                    <div class="col-lg-8 user-menu d-flex justify-content-end align-items-center">
+                        <ul class="nav">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">Reputation</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link text-bg-primary rounded-3">New Users</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">Editors</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">Moderators</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+        @* User list *@
+        <div class="container d-flex flex-wrap">
+            @foreach (var user in userInfos)
+            {
+                <div class="col-md-4">
+                    <div class="card m-1 mb-3">
+                        <div class="card-body">
+                            <div class="d-flex gap-3">
+                                <div class="user-img">
+                                    <img src="https://randomuser.me/api/portraits/men/75.jpg" class="img-fluid rounded-circle" />
+                                </div>
+                                <div class="user-info">
+                                    <h4>@user.Name</h4>
+                                    <h6>@user.Address</h6>
+                                    @foreach (var skill in @user.Skills)
+                                    {
+                                        <span class="badge bg-primary me-1">@skill</span>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
+
+@code {
+    private List<UserInfo> userInfos = new();
+    private string themeSetting = "light";
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        userInfos = CreateUserInfos();
+
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await jsRuntime.InvokeVoidAsync("switchDark", themeSetting);
+
+    }
+
+    public void HandleThemeClick(string input)
+    {
+        themeSetting = input;
+        StateHasChanged();
+    }
+
+    public class UserInfo
+    {
+        public string Name { get; set; }
+        public string Address { get; set; }
+        public List<string> Skills { get; set; }
+        public string Email { get; set; }
+    }
+
+    public List<UserInfo> CreateUserInfos()
+    {
+        List<UserInfo> returnable = new();
+        returnable.Add(new UserInfo()
+            {
+                Name = "Jane Doe",
+                Address = "Kalverstraat",
+                Skills = new() { "appels", "peren", "bananen" },
+                Email = "jane@doe.com"
+            });
+        returnable.Add(new UserInfo()
+            {
+                Name = "Tarzan",
+                Address = "de jungle",
+                Skills = new() { "beren", "leren", "kan" },
+                Email = "T@Jungle.com"
+            });
+        returnable.Add(new UserInfo()
+            {
+                Name = "Ben Doe",
+                Address = "Holly wood",
+                Skills = new() { "promo", "sales", "lying unnoticed" },
+                Email = "am@heist.com"
+            });
+        returnable.Add(new UserInfo()
+            {
+                Name = "Karate Kid",
+                Address = "New Jersey",
+                Skills = new() { "wax on", "wax off" },
+                Email = "keep@thebalance.com"
+            });
+
+        return returnable;
+    }
+}

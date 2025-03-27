@@ -1,0 +1,29 @@
+﻿body {
+    
+}
+
+
+.nav-link {
+    color: #808080; /* Change this to your desired text color */
+}
+
+.nav-link.active,.nav-link:hover {
+        color: #ffc107; /* Change this to your desired active/hover text color */
+    }
+.rounded-circle {
+    width: 80px; /* Set the width of the image */
+    height: 80px; /* Set the height of the image */
+    object-fit: cover; /* Ensure the image covers the area */
+}
+
+.pagination-dark .page-link .page-item{
+    background: red;
+    color: white;
+}
+
+@media(max-width: 993px){
+    .user-menu{
+        justify-content:center !important;
+        margin-top: 20px;
+    }
+}
