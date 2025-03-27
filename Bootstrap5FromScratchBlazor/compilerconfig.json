@@ -2,5 +2,13 @@
   {
     "outputFile": "wwwroot/Styles/BlazorStyleSheetSass.css",
     "inputFile": "Styles/BlazorStyleSheetSass.scss"
+  },
+  {
+    "outputFile": "wwwroot/Styles/WebCompilerSassBootstrap.css",
+    "inputFile": "Styles/WebCompilerSassBootstrap.scss"
+  },
+  {
+    "outputFile": "wwwroot/Styles/WebCompilerSassFontAwesome.css",
+    "inputFile": "Styles/WebCompilerSassFontAwesome.scss"
   }
 ]

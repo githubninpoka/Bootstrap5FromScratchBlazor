@@ -413,3 +413,4 @@ FodyWeavers.xsd
 /Bootstrap5FromScratchBlazor/wwwroot/fontawesome-free-6.7.2-web/sprites
 /Bootstrap5FromScratchBlazor/wwwroot/fontawesome-free-6.7.2-web/svgs
 /Bootstrap5FromScratchBlazor/wwwroot/fontawesome-free-6.7.2-web/webfonts
+*.txt
