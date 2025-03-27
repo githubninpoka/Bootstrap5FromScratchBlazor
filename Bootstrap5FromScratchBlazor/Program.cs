@@ -2,6 +2,8 @@ using Bootstrap5FromScratchBlazor.Components;
 
 namespace Bootstrap5FromScratchBlazor
 {
+
+    // cool => https://chrissainty.com/get-some-sass-into-your-blazor-app/
     public class Program
     {
         public static void Main(string[] args)
