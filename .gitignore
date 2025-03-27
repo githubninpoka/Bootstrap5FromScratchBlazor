@@ -402,3 +402,14 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+/Bootstrap5FromScratchBlazor/wwwroot/bootstrap/css
+/Bootstrap5FromScratchBlazor/wwwroot/bootstrap/scss/forms
+/Bootstrap5FromScratchBlazor/wwwroot/fontawesome-free-6.7.2-web/css
+/Bootstrap5FromScratchBlazor/wwwroot/fontawesome-free-6.7.2-web/less
+/Bootstrap5FromScratchBlazor/wwwroot/fontawesome-free-6.7.2-web/scss
+/Bootstrap5FromScratchBlazor/wwwroot/fontawesome-free-6.7.2-web/metadata
+/Bootstrap5FromScratchBlazor/wwwroot/fontawesome-free-6.7.2-web/js
+/Bootstrap5FromScratchBlazor/wwwroot/bootstrap/scss
+/Bootstrap5FromScratchBlazor/wwwroot/fontawesome-free-6.7.2-web/sprites
+/Bootstrap5FromScratchBlazor/wwwroot/fontawesome-free-6.7.2-web/svgs
+/Bootstrap5FromScratchBlazor/wwwroot/fontawesome-free-6.7.2-web/webfonts
