@@ -1,0 +1,14 @@
+﻿[
+  {
+    "outputFile": "wwwroot/css/Bootstrap.css",
+    "inputFile": "Styles/Bootstrap.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/FontAwesome.css",
+    "inputFile": "Styles/FontAwesome.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/EbookStyle.css",
+    "inputFile": "Styles/EbookStyle.scss"
+  }
+]
