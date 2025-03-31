@@ -26,5 +26,6 @@
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         await jsRuntime.InvokeVoidAsync("userScroll");
+        await jsRuntime.InvokeVoidAsync("menuWatch");
     }
 }

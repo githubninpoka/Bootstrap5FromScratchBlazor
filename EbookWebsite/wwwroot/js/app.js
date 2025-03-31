@@ -13,5 +13,20 @@
     })
 }
 
+function menuWatch() {
+    const navbarButton = document.querySelector('.navbar-toggler');
+    const navbar = document.querySelector('.navbar');
+
+    navbarButton.addEventListener('click', () => {
+        if (!navbarButton.classList.contains('collapsed')) {
+            navbar.classList.add('bg-dark');
+        } else {
+            if (window.scrollY < 51) {
+                navbar.classList.remove('bg-dark');
+            }
+        }
+    })
+}
+
 //document.addEventListener('DOMContentLoaded', userScroll);
 // small adjustment for blazor, call function inside onafterrender
